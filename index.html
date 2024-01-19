@@ -2,51 +2,66 @@
 <html lang="en">
 
 <head>
+    <!-- Meta information, including character set and viewport settings -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Title of the webpage -->
     <title>Task Manager - Manage And Search Your Pending Tasks In Clicks!</title>
 
+    <!-- Link to the favicon (shortcut icon) and external CSS file -->
     <link rel="shortcut icon" href=".\Images\favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./style.css">
 
 </head>
 
 <body>
+    <!-- Main content of the webpage -->
     <main>
+        <!-- Container with a class of 'wrap' -->
         <div class="wrap">
+            <!-- Heading section with a title and subtitle -->
             <section class="heading">
                 <p class="title">Task Manager</p>
                 <p class="subtitle">Manage And Search Your Pending Tasks In Clicks!</p>
             </section>
             
+            <!-- Task manager section with a search box, task box, and message -->
             <section class="task-manager">
+                <!-- Search box with a form containing an input and a reset icon -->
                 <div class="search-box">
                     <form class="search">
-                        <input type="text" name="task" placeholder="serach task" autocomplete="off">
+                        <input type="text" name="task" placeholder="search task" autocomplete="off">
                         <i class="bi bi-x-circle reset"></i>
                     </form>
                 </div>
+                
+                <!-- Task box with a list of tasks, an add task form, and a message with a clear button -->
                 <div class="task-box">
                     <ul class="tasks">
+                        <!-- List item with a task and a delete icon -->
                         <li><span>Learn JS</span>
                             <i class="bi bi-trash-fill delete"></i>
                         </li>
-                        
                     </ul>
+                    
+                    <!-- Form for adding a new task with an input and submit button -->
                     <form class="add">
                         <input type="text" name="task" placeholder="add task" autocomplete="off">
                         <input type="submit" value="Add">
                     </form>
-
                 </div>
+                
+                <!-- Message section with a span and a clear button -->
                 <div class="message">
-                    <span>
-                    </span>
+                    <span><!-- Message content goes here --></span>
                     <button class="clear">Clear All</button>
                 </div>
             </section>
         </div>
     </main>
+    
+    <!-- Link to the external JavaScript file -->
     <script src="./index.js"></script>
 </body>
 

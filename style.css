@@ -1,14 +1,18 @@
+/* Importing external fonts and Bootstrap Icons library */
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 
+/* Define global variables in root */
 :root{
     --box-shadow: rgb(184, 177, 177);
 }
 
+/* Utility class to hide elements */
 .hide{
     display: none !important;
 }
 
+/* Resetting default styles and setting common styles for all elements */
 *{
     margin: 0;
     padding: 0;
@@ -19,16 +23,19 @@
     list-style: none;
 }
 
+/* Styling for the main container */
 .wrap{
     background-color: rgb(34, 28, 28);
     min-height: 100vh;
     padding: 20px;
 }
 
+/* Styling for the main heading */
 .heading{
     margin: 10px auto 40px auto;
 }
 
+/* Styling for the title within the heading */
 .heading .title{
     font-size: 30px;
     color: #ffffff;
@@ -36,6 +43,7 @@
     text-align: center;
 }
 
+/* Styling for the subtitle within the heading */
 .heading .subtitle{
     font-size: 20px;
     color: #ffffff;
@@ -43,12 +51,14 @@
     text-align: center;
 }
 
+/* Styling for the task manager container */
 .task-manager{
     min-width: 350px;
     max-width: 450px;
     margin: auto;
 }
 
+/* Styling for the search box */
 .search-box{
     background-color: #ffffff;
     padding: 20px 25px;
@@ -56,6 +66,7 @@
     margin: 20px 0px;
 }
 
+/* Styling for task boxes and messages */
 .task-box, .message{
     background-color: #ffffff;
     padding: 20px 25px;
@@ -63,10 +74,13 @@
     margin: 20px 0px;
 }
 
+
+/* Styling for the search box input and reset button */
 .search-box .search{
     display: flex;
 
 }
+
 
 .search input{
     border-radius: 3px;
@@ -76,6 +90,7 @@
     font-size: 16px;
 }
 
+/* Styling for the reset button within the search box */
 .search-box i.reset{
     font-size: 24px;
     height: 100%;
@@ -83,6 +98,8 @@
     cursor: pointer;
 }
 
+
+/* Styling for the task box, tasks, and individual tasks */
 .task-box .tasks{
     margin: 10px 0px;
 }
@@ -98,6 +115,7 @@
     padding: 10px;
 }
 
+/* Styling for the task delete button and add task section */
 .task-box i.delete{
     color: #ffffff;
     background-color: #d82148;
@@ -112,6 +130,7 @@
     margin: 30px 0px 10px 0px;
 }
 
+/* Styling for the task input within the add task section */
 .task-box input[type="text"]{
     border-radius: 3px;
     width: 100%;
@@ -120,6 +139,7 @@
     font-size: 16px;
 }
 
+/* Styling for the task submit button within the add task section */
 .task-box input[type="submit"]{
     padding: 10px;
     font-size: 16px;
@@ -129,12 +149,14 @@
     border-radius: 3px;
 }
 
+/* Styling for the message box and clear button */
 .message{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+/* Styling for the clear button within the message box */
 .message .clear{
     border: 0px;
     background-color: #11468f;
