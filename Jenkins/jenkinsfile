@@ -17,7 +17,7 @@ pipeline {
         stage('Checkout Repository'){
             steps{
                 // Checkout to main branch in git repository.
-                git branch: 'main' , url: 'https://github.com/rjnimbalkar99/Task-Manager' // Clones the specified branch from the Git repository.
+                git branch: 'main' , url: 'https://github.com/rjnimbalkar99/Task-Manager-DevOps' // Clones the specified branch from the Git repository.
             }
         }
         stage('Docker Build'){
