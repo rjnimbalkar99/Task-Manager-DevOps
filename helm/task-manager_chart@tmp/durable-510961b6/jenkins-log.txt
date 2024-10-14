@@ -1,0 +1,7 @@
++ sed -i s/tag: .*/tag: "${BUILD_ID}"/ values.yaml
++ echo 6
+6
++ git config --global user.name rjnimbalkar99
++ git config --global user.email rjnimbalkar99@gmail.com
++ git clean -fdx
++ git add -A
