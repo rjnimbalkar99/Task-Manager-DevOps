@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: task-manager-ingress
+spec:
+  ingressClassName: nginx 
+  rules:
+    - host: task-manager.com                              #Replace with your desired hostname
+      http:
+        paths: 
+          - path: /
+            pathType: Prefix
+            backend:
+              service: 
+                name: task-manager-nodeport
+                port:
+                  number: 80
+
+

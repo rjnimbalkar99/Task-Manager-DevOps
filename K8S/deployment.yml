@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: task-manager-deployment
+spec:
+  replicas: 3                #Desired number of replica set
+  selector:
+    matchLabels:
+      app: task-manager         #App name which is going to replicate in 3 pods.
+  template:
+    metadata:
+      labels: 
+        app: task-manager      #Provide a app name.
+    spec:
+      containers:
+        - name: task-manager-container
+          image: rjnimbalkar99/test:task-manager 
+          ports:
+            - containerPort: 8080
+                         
+
