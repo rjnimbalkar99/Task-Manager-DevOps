@@ -17,7 +17,7 @@ pipeline {
         stage('Checkout Repository'){
             steps{
                 // Checkout to main branch in git repository.
-                git branch: 'main' , url: 'https://github.com/rjnimbalkar99/Task-Manager' // Clones the specified branch from the Git repository.
+                git branch: 'main' , url: 'https://github.com/rjnimbalkar99/Task-Manager-DevOps' // Clones the specified branch from the Git repository.
             }
         }
         stage('Docker Build'){
@@ -28,7 +28,7 @@ pipeline {
                         docker build -t task-manager:\${BUILD_ID} .
                         docker tag task-manager:\${BUILD_ID} rjnimbalkar99/task-manager:\${BUILD_ID}
 
-                        // Pushes the tagged image to Docker Hub for storage.
+                        # Pushes the tagged image to Docker Hub for storage.
                         docker push rjnimbalkar99/task-manager:\${BUILD_ID}
                     '''  
             }
@@ -39,15 +39,15 @@ pipeline {
                     // Update the tag in Helm chart.
                     withCredentials([usernamePassword(credentialsId: 'Github_credentials', usernameVariable: 'GITHUB_USERNAME', passwordVariable: 'GITHUB_PAT')]){
                         sh '''
-                            sed -i 's/tag: .*/tag: "\${BUILD_ID}"/' values.yaml           // Updates the image tag in values.yaml to the new build ID.
-                            echo "${BUILD_ID}"                                            // Outputs the current build ID for logging purposes.
+                            sed -i 's/tag: .*/tag: "\${BUILD_ID}"/' values.yaml           # Updates the image tag in values.yaml to the new build ID.
+                            echo "${BUILD_ID}"                                            # Outputs the current build ID for logging purposes.
                             git config --global user.name ${GITHUB_USERNAME}
                             git config --global user.email "rjnimbalkar99@gmail.com"
-                            git clean -fdx                                                // Removes all untracked files and directories from the working directory.
-                            git add -A                                                    // Stages all changes for commit.
+                            git clean -fdx                                                # Removes all untracked files and directories from the working directory.
+                            git add -A                                                    # Stages all changes for commit.
                             git commit -m "Update tag in Helm chart"
                             git remote set-url origin https://${GITHUB_USERNAME}:${GITHUB_PAT}@github.com/rjnimbalkar99/Task-Manager
-                            git push origin main                                          // Pushes the committed changes back to the main branch of the repository.
+                            git push origin main                                          # Pushes the committed changes back to the main branch of the repository.
                         '''
                         
                     }
@@ -60,11 +60,11 @@ pipeline {
                 sh ''' 
                    az version
 
-                   // Logs in to Azure using the service principal credentials & Sets the active Azure subscription.
+                   # Logs in to Azure using the service principal credentials & Sets the active Azure subscription.
                    az login --service-principal --username ${CLIENT_ID} --password ${CLIENT_SECRET} --tenant ${TENANT_ID}
                    az account set --subscription ${SUBSCRIPTION_ID}
                    
-                   // Set up AKS cluster & creates namespace inside the cluster.
+                   # Set up AKS cluster & creates namespace inside the cluster.
                    az group create --name Web --location ${location}
                    az aks create --name Task-manager --resource-group Web --node-count 1 --disable-rbac --no-ssh-key
                    az aks get-credentials --resource-group Web --name Task-manager --overwrite-existing
@@ -78,7 +78,7 @@ pipeline {
                 dir('helm'){
                     //Deploy Helm chart
                 sh '''
-                   // Switch to task-manager-app namespace & Deploy helm chart 
+                   # Switch to task-manager-app namespace & Deploy helm chart 
                    kubectl config set-context --current --namespace task-manager-app
                    helm install task-manager ./task-manager_chart --set image.tag=${BUILD_ID}    
                    kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
